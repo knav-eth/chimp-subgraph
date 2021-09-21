@@ -1,0 +1,8 @@
+type CHIMPImage @entity {
+    id: ID!
+    numericId: Int!
+    owner: Bytes!
+    author: Bytes!
+    name: String!
+    image: String!
+}

@@ -1,0 +1,26 @@
+specVersion: 0.0.2
+description: CHIMP
+repository: https://github.com/knav-eth/chimp-subgraph
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: CHIMP
+    network: mainnet
+    source:
+      address: '0x63a2E70b9208e8285C9A95F322243186cd77087B'
+      abi: CHIMP
+      startBlock: 13266061
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - CHIMPImage
+      abis:
+        - name: CHIMP
+          file: ./abis/CHIMP.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+      file: ./src/mapping.ts
